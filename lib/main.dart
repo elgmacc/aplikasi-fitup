@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/login.dart';
+import 'package:flutter_application_1/MyHomePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,10 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: const Color.fromARGB(255, 156, 127, 207)),
       ),
-      home: const LoginPage(), 
+      routes: {
+        "/" :(context) => const LoginPage(),
+        "/home" :(context) => const MyHomePage(),
+      }
     );
   }
 }

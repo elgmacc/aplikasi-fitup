@@ -8,46 +8,63 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-TextEditingController inputNama = new TextEditingController();
+
+  // Controller untuk input nama
+  TextEditingController inputNama = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar : AppBar(title: Text("Fitup")),
-      backgroundColor : Color.fromARGB(255, 237, 237, 237),
-      body:Column(
-        children: [ 
+
+      // AppBar halaman Home
+      appBar: AppBar(
+        title: const Text("Fitup"),
+      ),
+
+      backgroundColor: const Color.fromARGB(255, 237, 237, 237),
+
+      body: Column(
+        children: [
+
+          // Input nama
           Center(
-            child: Container(
+            child: SizedBox(
               width: 300,
-            child: TextFormField(
-              decoration: InputDecoration(
-                fillColor: const Color.fromARGB(255, 255, 187, 210),
-                hintText: 'Masukan nama kamu',
-                filled: true,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(49))
+              child: TextFormField(
+                controller: inputNama,
+
+                decoration: const InputDecoration(
+                  fillColor: Color.fromARGB(255, 255, 187, 210),
+                  hintText: 'Masukan nama kamu',
+                  filled: true,
+
+                  // Icon nama
+                  prefixIcon: Icon(Icons.person),
+
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(49),
+                    ),
+                  ),
                 ),
               ),
-          controller: inputNama,
-          onFieldSubmitted: (values) {
-            inputNama.text = values;
-            },
-          ),
-          ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(16)
+            ),
           ),
 
+          const SizedBox(height: 16),
+
+          // Tombol tampilkan nama
           ElevatedButton(
-            child: Text("Tampilkan Nama"),
-            onPressed: ()  {
+            child: const Text("Tampilkan Nama"),
+
+            onPressed: () {
+
+              // Menampilkan nama di terminal
               print(inputNama.text);
             },
-          )
-        ]
-      )
+          ),
+        ],
+      ),
     );
   }
 }
